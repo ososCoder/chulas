@@ -1,0 +1,15 @@
+{
+  "name": "chulas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Oscar Ousinde Suarez-ososCoder",
+  "license": "ISC",
+  "dependencies": {
+    "lit": "^3.1.2"
+  }
+}
