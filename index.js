@@ -6,23 +6,30 @@ export class Chula extends LitElement {
       showChula: { type: Boolean },
       chulaTime: { type: Number },
       eventName: { type: String },
+      chulaBackColor: { type: String },
+      chulaColor: { type: String },
    };
 
    static styles = css`
+      :host {
+         font-family: "Arial", sans-serif;
+      }
       .chula-container {
-         background-color: blue;
          padding: 0.5rem;
+         font-weight: bold;
          border-radius: 5px;
       }
    `;
 
    constructor() {
       super();
-      this.chulaMessage;
+      this.chulaMessage = "This is a default text"; //default. Needed tag attribute.
       this.showChula = false;
-      this.chulaTime = 0;
+      this.chulaTime = 0; //default. Needed tag attribute.
       this.timerId = 0;
-      this.eventName;
+      this.eventName; //default. Needed tag attribute.
+      this.chulaBackColor = "black"; //default. Needed tag attribute.
+      this.chulaColor = "white"; //default. Needed tag attribute.
    }
 
    connectedCallback() {
@@ -51,7 +58,10 @@ export class Chula extends LitElement {
       return html`
          <div
             class="chula-container"
-            style="${this.showChula ? "display: block" : "display: none"}"
+            style="color: ${this.chulaColor};background-color: ${this
+               .chulaBackColor}; ${this.showChula
+               ? "display: block"
+               : "display: none"}"
          >
             <p>${this.chulaMessage}</p>
          </div>
@@ -80,5 +90,4 @@ button.addEventListener("click", () => callingChula(eventName));
 //So basically I have two stratergies here. I need to pass the name of the event to the component.
 //One option is by parameters to the tag. The other is trying to set an internal property at the constructor
 //by reading the event? This is a problem because it needs to be done at the _callChula function that recives the event.
-//Maybe a requestUpdate to force it reload?
 //Actually is the first strategy what is implemented.
